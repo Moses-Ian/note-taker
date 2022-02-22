@@ -8,8 +8,6 @@ router.get('/notes', (request, response) => {
 });
 
 router.post('/notes', (request, response) => {
-	//do something
-	console.log('api post request made');
 	request.body.id = uuidv4(); 
 	
 	if(!validateNote(request.body)) {
@@ -19,6 +17,12 @@ router.post('/notes', (request, response) => {
 	
 	const note = createNewNote(request.body, notes);
 	response.json(note);
+});
+
+router.delete('/notes', (request, response) => {
+	//do something
+	console.log("delete request made");
+	console.log(request.body.id);
 });
 
 module.exports = router;
