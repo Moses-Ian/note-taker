@@ -5,13 +5,14 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node server",
-	"dev": "nodemon server"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "author": "Ian Moses",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "uuid": "^8.3.2"
   },
   "repository": {
     "type": "git",
