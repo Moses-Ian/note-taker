@@ -2,8 +2,11 @@ const router = require('express').Router();
 const { notes } = require('../../db/db.json');
 const { v4: uuidv4 } = require('uuid');
 const { createNewNote, validateNote } = require('../../lib/notes');
+const fs = require("fs");
+const path = require("path");
 
 router.get('/notes', (request, response) => {
+	console.log(notes);
 	response.json(notes);
 });
 
@@ -19,10 +22,13 @@ router.post('/notes', (request, response) => {
 	response.json(note);
 });
 
-router.delete('/notes', (request, response) => {
-	//do something
-	console.log("delete request made");
-	console.log(request.body.id);
+router.delete('/notes/:id', (request, response) => {
+	filteredNotes = notes.filter(note => note.id != request.params.id);
+  fs.writeFileSync(
+    path.join(__dirname, '../../db/db.json'),
+    JSON.stringify({ notes: filteredNotes }, null, 2)
+  );
+	response.status(200).send("Note Deleted.");
 });
 
 module.exports = router;
