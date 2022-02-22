@@ -28,7 +28,7 @@ router.delete('/notes/:id', (request, response) => {
     path.join(__dirname, '../../db/db.json'),
     JSON.stringify({ notes: filteredNotes }, null, 2)
   );
-	response.status(200).send("Note Deleted.");
+	response.status(200).send(JSON.stringify(filteredNotes));
 });
 
 module.exports = router;
