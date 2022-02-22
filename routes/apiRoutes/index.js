@@ -1,8 +1,8 @@
 const router = require('express').Router();
+const { notes } = require('../../db/db.json');
 
 router.get('/notes', (request, response) => {
-	//do something
-	console.log('api get request made');
+	response.json(notes);
 });
 
 router.post('/notes', (request, response) => {
